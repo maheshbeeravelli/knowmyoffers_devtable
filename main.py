@@ -89,22 +89,7 @@ class ViewPhotoHandler(blobstore_handlers.BlobstoreDownloadHandler):
         else:
             self.send_blob(photo_key)
             
-class OfferPage(webapp2.RequestHandler):
-    def get(self):
-      try:
-        key=self.request.get('key')
-        self.response.out.headers['Content-Type']='text/json'
-        offer = datamodel.Offers.get(key)
-        dict={'link':str(offer.aff_link),'coupon':str(offer.coupon_code)}
-        output=json.dumps(dict)
-        offer.clicks =offer.clicks+1
-        offer.put()
-        self.response.out.write(output)
-      except Exception as exc:
-        self.response.write("Exception")
-        self.response.write(exc)
-
 
 app = webapp2.WSGIApplication([
-  ('/', MainHandler),('/offer',OfferPage),('/signin',Signin),('/upload_photo', PhotoUploadHandler),('/view_photo/([^/]+)?',PhotoServeHandler)
+  ('/', MainHandler),('/signin',Signin),('/upload_photo', PhotoUploadHandler),('/view_photo/([^/]+)?',PhotoServeHandler)
 ], debug=True)

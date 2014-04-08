@@ -35,7 +35,6 @@
                   <button class="btn btn-default" id="upload_photo">Upload</button>
                 </div>
               </div>
-          
         </div>
     </div>
   </div><!--1st Row Ending -->
@@ -47,7 +46,12 @@
               <div class="form-group">
                 <label for="offer_store" class="col-sm-5 control-label">Store Name :</label>
                 <div class="col-sm-7">
-                  <input class="form-control" id="offer_store" type="text" placeholder="Store Name" name="store"		/>
+                  <!--<input class="form-control" id="offer_store" type="text" placeholder="Store Name" name="store"		/>-->
+                  <select class="form-control" name="offer_store">
+                    {%for store in stores%}
+                        <option value="{{store.store}}">{{store.store}}</option>
+                    {% endfor %}
+                  </select>
                 </div>
               </div>
               <div class="form-group">

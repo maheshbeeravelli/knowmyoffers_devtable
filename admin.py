@@ -25,12 +25,13 @@ class Admin(webapp2.RequestHandler):
                 # self.response.write("User is present")
                 my_user = db.GqlQuery("SELECT * FROM Users WHERE email = :1",user.email())
                 my_user = my_user.fetch(1)
+                stores = db.GqlQuery("SELECT * FROM Stores")
                 if len(my_user)==1:
                     for e in my_user:
                         # self.response.write("str(e.user_type()")
                         if e.user_type=="Admin":
                             template_values = {
-                              'name': "World","upload_url":upload_url
+                              'name': "World","upload_url":upload_url,"stores":stores
                             }
                             self.response.out.write(template.render(admin_template, template_values))
                         else:

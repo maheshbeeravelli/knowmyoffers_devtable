@@ -43,5 +43,7 @@ class Stores(db.Model):
   store_link = db.LinkProperty()
   coupons_count = db.IntegerProperty(default=0)
   deals_count = db.IntegerProperty(default=0)
-  # blob_key=db.StringProperty()
+  clicks = db.IntegerProperty(default=0)
   blob_key = blobstore.BlobReferenceProperty()
+  
+  

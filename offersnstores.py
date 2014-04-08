@@ -41,12 +41,16 @@ class StorePage(webapp2.RequestHandler):
           user_logged = "Guest"
         store = self.request.get("store")
         offers = db.GqlQuery("SELECT * FROM Offers where store=:1",store)
-        # stores = db.GqlQuery("SELECT * FROM Stores")
+        stores = db.GqlQuery("SELECT * FROM Stores")
+        for me in stores:
+          if me.store==store:
+            me.clicks = me.clicks+1
+            me.put()
         # today =  datetime.date.today()
       
         template_values = {
-          'name': user_logged,'offers':offers
-        } # Removed ,'stores':stores,'today':today,'offers_list':offers_list
+          'name': user_logged,'offers':offers,'stores':stores
+        } # Removed ,'today':today,'offers_list':offers_list
         self.response.out.write(template.render(path, template_values))
       except Exception as exc:
         self.response.write("Exception:")
