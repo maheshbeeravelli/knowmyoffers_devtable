@@ -20,7 +20,7 @@ admin_template = os.path.join(os.path.dirname(__file__), 'admin.html')
 class MainHandler(webapp2.RequestHandler):
   def get(self):
     # stores=[]
-    offers = db.GqlQuery("SELECT * FROM Offers")
+    offers = db.GqlQuery("SELECT * FROM Offers ORDER BY posted_on desc")
     stores = db.GqlQuery("SELECT * FROM Stores")
     today = datetime.date.today()
     # stores.append(db_stores)

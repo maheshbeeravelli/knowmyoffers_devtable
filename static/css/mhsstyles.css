@@ -1,19 +1,12 @@
-.header-left{
-  float:left;
-  width:30%;
-  height:30px;
-  visibility:hidden;
+.site-title{
+  font-family: helvetica nevue;
+  text-shadow:  2px 2px rgba(0, 0, 0, 0.15);
+  letter-spacing: 2px;
+  font-weight: bold;
 }
-.header-right{
-  float: right;
-  width:70%;
-  margin: 10px 0;
-  height:30px;
+.search-div{
+  margin:5px 0;
 }
-.left div{
-  float:right;
-}
-
 .widget-item{
   margin: 0 auto;
   width:200px;
